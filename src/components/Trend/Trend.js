@@ -29,6 +29,7 @@ const propTypes = {
   padding: PropTypes.number,
   radius: PropTypes.number,
   gradient: PropTypes.arrayOf(PropTypes.string),
+  maxValue: PropTypes.number,
 };
 
 const defaultProps = {
@@ -113,6 +114,7 @@ class Trend extends Component {
       padding,
       radius,
       gradient,
+      maxValue,
     } = this.props;
 
     // We need at least 2 points to draw a graph.
@@ -140,7 +142,7 @@ class Trend extends Component {
     const svgWidth = width || '100%';
     const svgHeight = height || '25%';
 
-    const normalizedValues = normalizeDataset(plainValues, {
+    const normalizedValues = normalizeDataset(plainValues, maxValue, {
       minX: padding,
       maxX: viewBoxWidth - padding,
       // NOTE: Because SVGs are indexed from the top left, but most data is
