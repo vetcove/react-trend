@@ -37,7 +37,7 @@ export const normalizeDataset = (data, maxValue = 0, { minX, maxX, minY, maxY })
   // the dataset. As ugly as it is, it's the best solution we can find (there
   // are ways within the SVG spec of changing it, but not without causing
   // breaking changes).
-  if (boundariesY.min === boundariesY.max) {
+  if (boundariesY.min === normalizedMax) {
     // eslint-disable-next-line no-param-reassign
     normalizedData[0].y += 0.0001;
   }
